@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity()
         //access the array of strings for the spinner
         val subjects = resources.getStringArray(R.array.subjects)
         val classNamesCompSci = resources.getStringArray(R.array.classNameCompSci)
-        //test comments
+        //test comments 2
         //access the spinner
         val subjectSpinner = findViewById<Spinner>(R.id.subjectSpinner)
         val compSciSpinner = findViewById<Spinner>(R.id.classNamesSpinner)
