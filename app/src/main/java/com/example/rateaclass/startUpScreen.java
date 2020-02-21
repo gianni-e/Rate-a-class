@@ -13,12 +13,25 @@ public class startUpScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up_screen);
         Button rateButton = (Button) findViewById(R.id.rateCourse);
+        Button viewButton = (Button) findViewById(R.id.viewCourse);
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openRateCourse();
             }
         });
+        viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openViewCourse();
+            }
+        });
+    }
+
+    public void openViewCourse()
+    {
+        Intent intent = new Intent(this, viewCourse.class);
+        startActivity(intent);
     }
 
     public void openRateCourse()
