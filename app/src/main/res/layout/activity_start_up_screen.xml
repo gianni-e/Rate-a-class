@@ -7,28 +7,34 @@
     tools:context=".startUpScreen">
 
     <Button
-        android:id="@+id/rateCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:text="@string/rate_course"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viewCourse"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/viewCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150"
+        android:layout_height="45"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="273dp"
         android:background="@drawable/border"
         android:text="@string/view_courses"
-        android:textSize="11sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/rateCourse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rateCourse" />
+
+    <Button
+        android:id="@+id/rateCourse"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="323dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/border"
+        android:text="@string/rate_course"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/viewCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
