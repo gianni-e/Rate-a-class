@@ -8,17 +8,17 @@
     tools:context=".rateCourse">
 
     <Spinner
-    android:id="@+id/spinner2"
-    android:layout_width="375dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="196dp"
-    android:layout_marginBottom="54dp"
-    android:popupBackground="@color/white"
-    app:layout_constraintBottom_toTopOf="@+id/professorName"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/spinner2"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="196dp"
+        android:layout_marginBottom="54dp"
+        android:popupBackground="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/professorName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/professorName"
@@ -35,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="o" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -44,9 +45,9 @@
         android:layout_marginTop="57dp"
         android:layout_marginBottom="319dp"
         android:numStars="5"
+        android:progressTint="@color/yellowButton"
         android:rating="3"
         android:stepSize="1"
-        android:progressTint="@color/yellowButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,7 +63,7 @@
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="14dp"
         android:background="@color/white"
-        android:text="Overall Rating of the class"
+        android:text="@string/classRatingText"
         android:textColor="#050404"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,18 +73,18 @@
     <EditText
         android:id="@+id/comments"
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="486dp"
+        android:background="@color/white"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="Comments about the class"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:maxLength="200"
+        android:text="@string/classComments"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        android:autofillHints="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
