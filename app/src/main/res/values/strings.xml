@@ -2,6 +2,7 @@
     <string name="app_name">Rate a class</string>
     <string name="rate_course">Rate Course</string>
     <string name="view_courses">View Courses</string>
-    <string name="logo">LOGO</string>
-    <string name="rate_a_class_header">Rate A Class</string>
+    <string name="professorNameText">Enter a professor\'s name</string>
+    <string name="classComments">Comments about the class</string>
+    <string name="classRatingText">Overall Rating of the class</string>
 </resources>
