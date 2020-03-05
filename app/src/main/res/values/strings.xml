@@ -9,7 +9,7 @@
         <item value="ACCT">Accounting</item>
         <item value="ART">Art</item>
         <item value="EDAT">Art Education</item>
-        <item value="ASTR">Astromony</item>
+        <item value="ASTR">Astronomy</item>
         <item value="BIO">Biology</item>
         <item value="BUSA">Business Administration</item>
         <item value="CHEM">Chemistry</item>
@@ -23,12 +23,9 @@
         <item value="EDEL">Elementary Education</item>
         <item value="ENG">English</item>
         <item value="FIN">Finance</item>
-        <item value="FYS">First Year Seminar</item>
         <item value="FS">Forensic Science</item>
         <item value="FR">French</item>
         <item value="GEOG">Geography</item>
-        <item value="GED">Graduate Education</item>
-        <item value="GESP">Graduate Special Education</item>
         <item value="HIST">History</item>
         <item value="HOSP">Hospitality Management</item>
         <item value="ITAL">Italian</item>
@@ -49,8 +46,6 @@
         <item value="SPAN">Spanish</item>
         <item value="EDSP">Special Education</item>
         <item value="SPM">Sport Management Studies</item>
-        <item value="STAC">Stac</item>
-        <item value="TR">Therapeutic Recreation</item>
         <item value="WRT">Writing</item>
     </string-array>
     <string-array name="art">

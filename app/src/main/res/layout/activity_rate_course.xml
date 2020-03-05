@@ -48,7 +48,6 @@
         android:layout_marginBottom="319dp"
         android:numStars="5"
         android:progressTint="@color/yellowButton"
-        android:progressBackgroundTint="@color/yellowButton"
         android:rating="3"
         android:stepSize="1"
         app:layout_constraintBottom_toBottomOf="parent"
