@@ -1,20 +1,103 @@
 package com.example.rateaclass;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class rateCourse extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+
+    String ServerURL = "http://127.0.0.1/api/getdata.php";
+    //Data input from users
+    EditText professor, comments;
+    Spinner courseName, courseNumber;
+    RatingBar rating;
+    //variables to use for inserting to SQL
+    String course_name, professor_name, comments_given, course_number, rating_value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_course);
         courseSelection();
+        comments = findViewById(R.id.comments);
+        professor = findViewById(R.id.professorName);
+        courseNumber = findViewById(R.id.courseNumber);
+        courseName = findViewById(R.id.courseName);
+        rating = findViewById(R.id.ratingBar);
+        Button submit = findViewById(R.id.submitButton);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String ratingValue = String.valueOf(rating.getNumStars());
+                final String nameValue = courseName.getSelectedItem().toString().trim();
+                final String numberValue = courseNumber.getSelectedItem().toString().trim();
+                final String commentsValue = comments.getText().toString().trim();
+                final String professorValue = professor.getText().toString().trim();
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerURL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response)
+                    {
+
+                    }
+                }, new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String,String> params = new HashMap<>();
+                        params.put("rating", ratingValue);
+                        params.put("name", nameValue);
+                        params.put("number", numberValue);
+                        params.put("comments", commentsValue);
+                        params.put("professor", professorValue);
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+                Log.d("TAG", "onClick: Success!");
+            }
+        });
+    }
+
+    public void getData()
+    {
+        course_name = String.valueOf(courseName.getSelectedItem());
+        professor_name = professor.getText().toString();
+        comments_given = comments.getText().toString();
+        course_number = String.valueOf(courseNumber.getSelectedItem());
+        rating_value = String.valueOf(rating.getRating());
+    }
+
+    public Boolean isEmpty(String strValue) {
+        if (strValue == null || strValue.trim().equals(("")))
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -178,4 +261,5 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         number.setAdapter(adapter);
         number.setOnItemSelectedListener(this);
     }
+
 }

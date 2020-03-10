@@ -1,6 +1,6 @@
 package com.example.rateaclass;
 
-public class rating
+public class Rating
 {
     private int starRating;
     private String courseName;
@@ -8,9 +8,9 @@ public class rating
     private String comments;
     private String instructor;
 
-    public rating(){}
+    public Rating(){}
 
-    public rating(int rating, String name, String number, String comment, String professor)
+    public Rating(int rating, String name, String number, String comment, String professor)
     {
         this.starRating = rating;
         this.courseName = name;
