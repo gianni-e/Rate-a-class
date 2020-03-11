@@ -43,15 +43,18 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         courseName = findViewById(R.id.courseName);
         rating = findViewById(R.id.ratingBar);
         Button submit = findViewById(R.id.submitButton);
-        submit.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 final String ratingValue = String.valueOf(rating.getNumStars());
                 final String nameValue = courseName.getSelectedItem().toString().trim();
                 final String numberValue = courseNumber.getSelectedItem().toString().trim();
                 final String commentsValue = comments.getText().toString().trim();
                 final String professorValue = professor.getText().toString().trim();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerURL, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerURL, new Response.Listener<String>()
+                {
                     @Override
                     public void onResponse(String response)
                     {
