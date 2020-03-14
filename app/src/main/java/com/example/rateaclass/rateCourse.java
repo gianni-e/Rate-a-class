@@ -76,7 +76,7 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
 
             try
             {
-                URL url = new URL("http://192.168.1.2/api/getdata.php");
+                URL url = new URL("http://192.168.1.2/api/insert.php");
                 String urlParams = "rating="+rating+"&name="+courseName+"&number="+courseNumber+"&comments="+comments+"&professor="+professor;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
