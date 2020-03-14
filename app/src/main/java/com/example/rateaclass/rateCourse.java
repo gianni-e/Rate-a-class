@@ -1,7 +1,8 @@
 package com.example.rateaclass;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,28 +10,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class rateCourse extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
-
-    String ServerURL = "http://127.0.0.1/api/getdata.php";
+public class rateCourse extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+{
     //Data input from users
     EditText professor, comments;
     Spinner courseName, courseNumber;
     RatingBar rating;
     //variables to use for inserting to SQL
     String course_name, professor_name, comments_given, course_number, rating_value;
+    Context ctx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,54 +43,77 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         submit.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-                final String ratingValue = String.valueOf(rating.getNumStars());
-                final String nameValue = courseName.getSelectedItem().toString().trim();
-                final String numberValue = courseNumber.getSelectedItem().toString().trim();
-                final String commentsValue = comments.getText().toString().trim();
-                final String professorValue = professor.getText().toString().trim();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerURL, new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-
-                    }
-                }, new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        Map<String,String> params = new HashMap<>();
-                        params.put("rating", ratingValue);
-                        params.put("name", nameValue);
-                        params.put("number", numberValue);
-                        params.put("comments", commentsValue);
-                        params.put("professor", professorValue);
-                        return params;
-                    }
-                };
-                RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(stringRequest);
-                Log.d("TAG", "onClick: Success!");
+            public void onClick(View v) {
+                submitRating(v);
             }
         });
     }
 
-    public void getData()
+    public void submitRating(View v)
     {
         course_name = String.valueOf(courseName.getSelectedItem());
         professor_name = professor.getText().toString();
         comments_given = comments.getText().toString();
         course_number = String.valueOf(courseNumber.getSelectedItem());
         rating_value = String.valueOf(rating.getRating());
+        backgroundTask b = new backgroundTask();
+        b.execute(rating_value, course_name, course_number, comments_given, professor_name);
+    }
+
+    class backgroundTask extends AsyncTask<String, String, String>
+    {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String professor = params[4];
+            String comments = params[3];
+            String courseName = params[1];
+            String courseNumber = params[2];
+            String rating = params[0];
+            String data = "";
+            int tmp;
+
+            try
+            {
+                URL url = new URL("http://192.168.1.2/api/getdata.php");
+                String urlParams = "rating="+rating+"&name="+courseName+"&number="+courseNumber+"&comments="+comments+"&professor="+professor;
+
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setDoOutput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                os.write(urlParams.getBytes());
+                os.flush();
+                os.close();
+                InputStream is = httpURLConnection.getInputStream();
+                while((tmp=is.read())!=-1)
+                {
+                    data += (char)tmp;
+                }
+                is.close();
+                httpURLConnection.disconnect();
+
+                return data;
+
+            }
+            catch (MalformedURLException e)
+            {
+                e.printStackTrace();
+                return "Exception: "+e.getMessage();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                return "Exception: "+e.getMessage();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if(s.equals("")){
+                s="Data saved successfully.";
+            }
+            Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+        }
     }
 
     public Boolean isEmpty(String strValue) {
