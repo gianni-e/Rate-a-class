@@ -113,7 +113,7 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         {
             if(s.equals(""))
             {
-                s = "Data saved successfully.";
+                s = "Rating submitted!";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
             goToSuccess();
