@@ -1,6 +1,7 @@
 package com.example.rateaclass;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -108,12 +109,21 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            if(s.equals("")){
-                s="Data saved successfully.";
+        protected void onPostExecute(String s)
+        {
+            if(s.equals(""))
+            {
+                s = "Data saved successfully.";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            goToSuccess();
         }
+    }
+
+    public void goToSuccess()
+    {
+        Intent intent = new Intent(this, successScreen.class);
+        startActivity(intent);
     }
 
     public Boolean isEmpty(String strValue) {

@@ -5,6 +5,9 @@
     <string name="professorNameText"></string>
     <string name="classComments"></string>
     <string name="classRatingText">Overall Rating of the class</string>
+    <string name="home">home</string>
+    <string name="thank_you_for_your_review">Thank you for your review!</string>
+    <string name="tap_the_home_button_to_return_to_the_main_screen">Tap the HOME button to return to the main screen.</string>
     <string-array name="courses">
         <item value="ACCT">Accounting</item>
         <item value="ART">Art</item>
