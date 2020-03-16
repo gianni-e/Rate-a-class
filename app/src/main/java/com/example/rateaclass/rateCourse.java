@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class rateCourse extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+public class rateCourse extends AppCompatActivity
 {
     //Data input from users
     EditText professor, comments;
@@ -34,7 +34,6 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_course);
-        courseSelection();
         comments = findViewById(R.id.comments);
         professor = findViewById(R.id.professorName);
         courseNumber = findViewById(R.id.courseNumber);
@@ -46,6 +45,22 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
                 submitRating(v);
+            }
+        });
+
+        courseName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                courseSelection();
+                courseName.setOnItemSelectedListener(this);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
             }
         });
     }
@@ -120,39 +135,19 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
         }
     }
 
-    public void goToSuccess()
-    {
+    public void goToSuccess() {
         Intent intent = new Intent(this, successScreen.class);
         startActivity(intent);
     }
 
-    public Boolean isEmpty(String strValue) {
-        if (strValue == null || strValue.trim().equals(("")))
-            return true;
-        else
-            return false;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        courseSelection();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
     public void courseSelection()
     {
-        Spinner course = findViewById(R.id.courseName);
-        Spinner number = findViewById(R.id.courseNumber);
          /*
         check what course name is selected in the course spinner
         and display course numbers in the course spinner that correspond to it
         */
         ArrayAdapter<CharSequence> adapter = null;
-        String currentSelection = (String) course.getSelectedItem();
+        String currentSelection = courseName.getSelectedItem().toString();
         if (currentSelection.equals("Accounting"))
         {
             adapter = ArrayAdapter.createFromResource(this, R.array.acct, android.R.layout.simple_spinner_item);
@@ -290,9 +285,10 @@ public class rateCourse extends AppCompatActivity implements AdapterView.OnItemS
             adapter = ArrayAdapter.createFromResource(this, R.array.hosp, android.R.layout.simple_spinner_item);
         }
 
-
-        number.setAdapter(adapter);
-        number.setOnItemSelectedListener(this);
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();
+            courseNumber.setAdapter(adapter);
+        }
     }
 
 }

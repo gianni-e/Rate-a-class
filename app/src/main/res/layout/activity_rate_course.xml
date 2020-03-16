@@ -11,115 +11,115 @@
         android:id="@+id/courseNumber"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="29dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/professorName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/professorName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="273dp"
-        android:layout_marginBottom="434dp"
+        android:layout_marginBottom="23dp"
         android:background="@color/white"
+        android:ellipsize="start"
         android:ems="10"
-        android:inputType="text"
         android:hint="Enter a professor's name"
+        android:inputType="text"
+        android:maxLength="20"
         android:text="@string/professorNameText"
         android:textColorHint="@color/black"
-        android:ellipsize="start"
-        android:maxLength="20"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingClassStars"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="o" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="319dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="17dp"
         android:numStars="5"
         android:progressTint="@color/yellowButton"
         android:rating="3"
         android:stepSize="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/comments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorName" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ratingClassStars"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="160dp"
+        android:layout_height="19dp"
         android:layout_marginBottom="14dp"
         android:background="@color/white"
         android:text="@string/classRatingText"
         android:textColor="#050404"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorName" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/comments"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="486dp"
+        android:layout_height="131dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:ems="10"
+        android:gravity="top|left"
         android:hint="Comments about the class"
         android:importantForAutofill="no"
-        android:inputType="textLongMessage"
+        android:inputType="textMultiLine"
+        android:lines="6"
         android:maxLength="200"
+        android:maxLines="10"
+        android:scrollbars="vertical"
         android:text="@string/classComments"
         android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/courseName"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="117dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="55dp"
-        android:entries="@array/courses"
+        android:layout_marginBottom="62dp"
         android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/courseNumber"
+        android:entries="@array/courses"
+        app:layout_constraintBottom_toTopOf="@+id/professorName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="133dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="52dp"
         android:background="@color/yellowButton"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/courseName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comments" />
+        app:srcCompat="@drawable/ratelogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
