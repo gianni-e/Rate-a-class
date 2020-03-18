@@ -40,6 +40,7 @@ public class rateCourse extends AppCompatActivity
         courseName = findViewById(R.id.courseName);
         rating = findViewById(R.id.ratingBar);
         Button submit = findViewById(R.id.submitButton);
+        
         submit.setOnClickListener(new View.OnClickListener()
         {
             @Override
