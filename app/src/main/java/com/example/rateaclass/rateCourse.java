@@ -40,11 +40,13 @@ public class rateCourse extends AppCompatActivity
         courseName = findViewById(R.id.courseName);
         rating = findViewById(R.id.ratingBar);
         Button submit = findViewById(R.id.submitButton);
-        
+
         submit.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                //called when we click the submit button
                 submitRating(v);
             }
         });
@@ -54,6 +56,8 @@ public class rateCourse extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                //method is called when the user selects something from the first spinner on the rating page
+                //listener is used to check the first spinner, not the second one that we want to populate
                 courseSelection();
                 courseName.setOnItemSelectedListener(this);
             }
@@ -82,6 +86,7 @@ public class rateCourse extends AppCompatActivity
 
         @Override
         protected String doInBackground(String... params) {
+            //create parameters for the post execute when the user hits submit
             String professor = params[4];
             String comments = params[3];
             String courseName = params[1];
@@ -92,7 +97,10 @@ public class rateCourse extends AppCompatActivity
 
             try
             {
+                //url that has the php file with database connection and inserts data
+                //doesn't support HTTPS as this isn't about security, rather than functionality(pretty sure i had to force it to use clear text?)
                 URL url = new URL("http://192.168.1.2/api/insert.php");
+                //url parameters that get added on to the url to POST
                 String urlParams = "rating="+rating+"&name="+courseName+"&number="+courseNumber+"&comments="+comments+"&professor="+professor;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -137,6 +145,7 @@ public class rateCourse extends AppCompatActivity
     }
 
     public void goToSuccess() {
+        //if post is successful, call this function to go to success screen activity
         Intent intent = new Intent(this, successScreen.class);
         startActivity(intent);
     }
