@@ -2,7 +2,7 @@ package com.example.rateaclass;
 
 public class Rating
 {
-    private int starRating;
+    private String starRating;
     private String courseName;
     private String courseNumber;
     private String comments;
@@ -10,7 +10,7 @@ public class Rating
 
     public Rating(){}
 
-    public Rating(int rating, String name, String number, String comment, String professor)
+    public Rating(String rating, String name, String number, String comment, String professor)
     {
         this.starRating = rating;
         this.courseName = name;
@@ -19,11 +19,11 @@ public class Rating
         this.instructor = professor;
     }
 
-    public void setStarRating(int rating)
+    public void setStarRating(String rating)
     {
         this.starRating = rating;
     }
-    public int getStarRating()
+    public String getStarRating()
     {
         return this.starRating;
     }
@@ -63,4 +63,5 @@ public class Rating
     {
         return this.instructor;
     }
+
 }

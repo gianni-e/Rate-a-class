@@ -4,25 +4,26 @@
     <string name="view_courses">View Courses</string>
     <string name="professorNameText"></string>
     <string name="classComments"></string>
-    <string name="classRatingText">Overall Rating of the class</string>
+    <string name="classRatingText">How did you feel about this class?</string>
     <string name="home">home</string>
     <string name="thank_you_for_your_review">Thank you for your review!</string>
     <string name="tap_the_home_button_to_return_to_the_main_screen">Please tap the HOME button to return to the main screen.</string>
+    <string name="search">Search</string>
     <string-array name="courses">
         <item>Accounting</item>
         <item>Art</item>
         <item>Art Education</item>
         <item>Astronomy</item>
         <item>Biology</item>
-        <item >Business Administration</item>
+        <item>Business Administration</item>
         <item>Chemistry</item>
         <item>Communication Arts</item>
         <item>Computer Science</item>
         <item>Criminal Justice</item>
         <item>Economics</item>
-        <item >Education</item>
-        <item >Education Early Childhood</item>
-        <item >Education Middle School</item>
+        <item>Education</item>
+        <item>Education Early Childhood</item>
+        <item>Education Middle School</item>
         <item>Elementary Education</item>
         <item>English</item>
         <item>Finance</item>
