@@ -10,9 +10,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingViewHolder>
+public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingViewHolder> implements Filterable
 {
     public class RatingViewHolder extends RecyclerView.ViewHolder
     {
@@ -34,19 +35,15 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
     }
 
     private Context mContext;
-    private ArrayList<Rating> mRatings;
-    private ArrayList<Rating> ratingListFull;
+    private List<Rating> ratingList;
+    private List<Rating> ratingListFull;
 
     public RatingAdapter(Context context, ArrayList<Rating> ratings)
     {
         mContext = context;
-        mRatings = ratings;
-    }
-
-    RatingAdapter(ArrayList<Rating> mRatings)
-    {
-        this.mRatings = mRatings;
-        ratingListFull = new ArrayList<>(mRatings);
+        this.ratingList = ratings;
+        ratingListFull = new ArrayList<>();
+        ratingListFull.addAll(ratingList);
     }
 
     @Override
@@ -59,7 +56,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
     @Override
     public void onBindViewHolder(RatingViewHolder holder, int position)
     {
-        Rating currentItem = mRatings.get(position);
+        Rating currentItem = ratingList.get(position);
 
         String name = currentItem.getCourseName();
         String number = currentItem.getCourseNumber();
@@ -76,6 +73,44 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
 
     @Override
     public int getItemCount() {
-        return mRatings.size();
+        return ratingList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return ratingFilter;
+    }
+
+    private Filter ratingFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Rating> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(ratingListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Rating item : ratingListFull) {
+                    if (item.getCourseName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            ratingList.clear();
+            ratingList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
 }
