@@ -35,8 +35,8 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
     }
 
     private Context mContext;
-    private List<Rating> ratingList;
-    private List<Rating> ratingListFull;
+    private ArrayList<Rating> ratingList;
+    private ArrayList<Rating> ratingListFull;
 
     public RatingAdapter(Context context, ArrayList<Rating> ratings)
     {
@@ -111,6 +111,4 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
             notifyDataSetChanged();
         }
     };
-
-
 }

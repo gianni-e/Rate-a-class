@@ -44,7 +44,6 @@ public class viewCourse extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_view_course);
         mRecyclerView = findViewById(R.id.reviewViews);
         mRecyclerView.setHasFixedSize(true);
@@ -52,35 +51,8 @@ public class viewCourse extends AppCompatActivity
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         mRatingList = new ArrayList<>();
-
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //this is used to add our search option in the action bar of the layout
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ratingAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
     }
 
     private void parseJSON()
@@ -130,5 +102,31 @@ public class viewCourse extends AppCompatActivity
         });
 
         mRequestQueue.add(request);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //this is used to add our search option in the action bar of the layout
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ratingAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 }
