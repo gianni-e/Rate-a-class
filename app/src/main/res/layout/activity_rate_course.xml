@@ -7,130 +7,167 @@
     android:background="#6C2E45"
     tools:context=".rateCourse">
 
-    <Spinner
-        android:id="@+id/courseNumber"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/professorName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseName" />
-
-    <EditText
-        android:id="@+id/professorName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
-        android:background="@color/white"
-        android:ellipsize="start"
-        android:ems="10"
-        android:hint="Enter a professor's name"
-        android:inputType="text"
-        android:maxLength="20"
-        android:text="@string/professorNameText"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/ratingClassStars"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="o" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="17dp"
-        android:numStars="5"
-        android:progressTint="@color/yellowButton"
-        android:rating="3"
-        android:stepSize="1"
+        android:layout_marginBottom="12dp"
+        android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintBottom_toTopOf="@+id/comments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/ratingClassStars"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="14dp"
-        android:background="@color/white"
-        android:text="@string/classRatingText"
-        android:textColor="#050404"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/majorSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
-        android:background="@color/white"
-        android:text="Please select a major and course"
-        android:textColor="#050404"
-        app:layout_constraintBottom_toTopOf="@+id/courseName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/courseName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:background="#FFFFFF"
-        android:entries="@array/courses"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/majorSelect" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/majorSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="Select a major:"
+                android:textColor="#FFFFFF" />
+
+            <Spinner
+                android:id="@+id/courseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:entries="@array/courses"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="189dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/courseInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="Select a course:"
+                android:textColor="#FFFFFF" />
+
+            <Spinner
+                android:id="@+id/courseNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/professorInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="7"
+                android:lines="2"
+                android:paddingBottom="15dp"
+                android:text="Enter your Professor's name:"
+                android:textColor="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/professorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:ems="12"
+                android:hint="Professor"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="@string/professorNameText"
+                android:textColorHint="@color/black"
+                tools:targetApi="o" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ratingClassStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="6"
+                android:lines="3"
+                android:paddingBottom="15dp"
+                android:text="@string/classRatingText"
+                android:textColor="#FFFFFF" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:progressTint="@color/yellowButton"
+                android:rating="3"
+                android:stepSize="1" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/comments"
         android:layout_width="300dp"
         android:layout_height="131dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
         android:background="@color/white"
-        android:ems="10"
+        android:ems="12"
         android:gravity="top|left"
         android:hint="Comments about the class"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:lines="6"
         android:maxLength="200"
-        android:maxLines="10"
+        android:singleLine="true"
         android:scrollbars="vertical"
         android:text="@string/classComments"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="92dp"
         android:background="@color/yellowButton"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comments" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/majorSelect"
+        android:layout_height="189dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

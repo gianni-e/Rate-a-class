@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +41,20 @@ public class rateCourse extends AppCompatActivity
         courseName = findViewById(R.id.courseName);
         rating = findViewById(R.id.ratingBar);
         Button submit = findViewById(R.id.submitButton);
+
+        comments.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER)
+                {
+                    // Just ignore the [Enter] key
+                    return true;
+                }
+                // Handle all other keys in the default way
+                return (keyCode == KeyEvent.KEYCODE_ENTER);
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener()
         {
