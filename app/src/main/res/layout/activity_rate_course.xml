@@ -24,7 +24,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/majorSelect"
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
                 android:paddingBottom="15dp"
-                android:text="Select a major:"
+                android:text="@string/majorSelectString"
                 android:textColor="#FFFFFF" />
 
             <Spinner
@@ -48,14 +49,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/courseInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
-                android:text="Select a course:"
+                android:text="@string/courseSelectString"
                 android:textColor="#FFFFFF" />
 
             <Spinner
@@ -68,7 +70,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/professorInput"
@@ -76,9 +79,10 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:lines="2"
-                android:paddingBottom="15dp"
-                android:text="Enter your Professor's name:"
-                android:textColor="#FFFFFF" />
+                android:text="@string/professorInputString"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="start"
+                />
 
             <EditText
                 android:id="@+id/professorName"
@@ -91,7 +95,7 @@
                 android:maxLength="20"
                 android:singleLine="true"
                 android:text="@string/professorNameText"
-                android:textColorHint="@color/black"
+                android:textColorHint="#373030"
                 tools:targetApi="o" />
         </LinearLayout>
 
