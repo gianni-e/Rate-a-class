@@ -88,6 +88,7 @@
                 android:id="@+id/professorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:ellipsize="start"
                 android:ems="12"
                 android:hint="Professor"
@@ -95,7 +96,8 @@
                 android:maxLength="20"
                 android:singleLine="true"
                 android:text="@string/professorNameText"
-                android:textColorHint="#373030"
+                android:textColorHint="#000000"
+                android:layout_gravity="center"
                 tools:targetApi="o" />
         </LinearLayout>
 
