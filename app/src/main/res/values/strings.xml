@@ -12,6 +12,10 @@
     <string name="professorInputString">Enter your Professor\'s name:</string>
     <string name="courseSelectString">Select a course:</string>
     <string name="majorSelectString">Select a major:</string>
+    <string name="submitButtonText">Submit</string>
+    <string name="logoText">logo</string>
+    <string name="comments_about_the_class">Comments about the class</string>
+    <string name="professorSpinnerText">Professor</string>
     <string-array name="courses">
         <item>Accounting</item>
         <item>Art</item>
@@ -44,7 +48,6 @@
         <item>Philosophy</item>
         <item>Physics</item>
         <item>Political Science</item>
-        <item>Project-Based Class</item>
         <item>Psychology</item>
         <item>Religious Studies</item>
         <item>Science</item>
@@ -52,7 +55,6 @@
         <item>Sociology</item>
         <item>Spanish</item>
         <item>Special Education</item>
-        <item>Sport Management Studies</item>
         <item>Writing</item>
     </string-array>
     <string-array name="art">

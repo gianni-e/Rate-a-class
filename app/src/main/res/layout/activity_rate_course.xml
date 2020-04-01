@@ -31,14 +31,15 @@
                 android:id="@+id/majorSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="10dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="15dp"
                 android:text="@string/majorSelectString"
                 android:textColor="#FFFFFF" />
 
             <Spinner
                 android:id="@+id/courseName"
-                android:layout_width="wrap_content"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:entries="@array/courses"
@@ -56,13 +57,14 @@
                 android:id="@+id/courseInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="10dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="10dp"
                 android:text="@string/courseSelectString"
                 android:textColor="#FFFFFF" />
 
             <Spinner
                 android:id="@+id/courseNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF" />
         </LinearLayout>
@@ -91,14 +93,15 @@
                 android:background="#FFFFFF"
                 android:ellipsize="start"
                 android:ems="12"
-                android:hint="Professor"
+                android:hint="@string/professorSpinnerText"
                 android:inputType="text"
                 android:maxLength="20"
                 android:singleLine="true"
                 android:text="@string/professorNameText"
                 android:textColorHint="#000000"
                 android:layout_gravity="center"
-                tools:targetApi="o" />
+                tools:targetApi="o"
+                android:importantForAutofill="no" />
         </LinearLayout>
 
         <LinearLayout
@@ -136,8 +139,8 @@
         android:layout_marginBottom="24dp"
         android:background="@color/white"
         android:ems="12"
-        android:gravity="top|left"
-        android:hint="Comments about the class"
+        android:gravity="top|start"
+        android:hint="@string/comments_about_the_class"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:lines="6"
@@ -160,7 +163,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="92dp"
         android:background="@color/yellowButton"
-        android:text="Submit"
+        android:text="@string/submitButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -178,6 +181,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ratelogo" />
+        app:srcCompat="@drawable/ratelogo"
+        android:contentDescription="@string/logoText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

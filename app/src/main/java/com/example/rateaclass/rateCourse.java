@@ -301,10 +301,6 @@ public class rateCourse extends AppCompatActivity
         {
             adapter = ArrayAdapter.createFromResource(this, R.array.writing, android.R.layout.simple_spinner_item);
         }
-        else if(currentSelection.equals("Sports Management Studies"))
-        {
-            adapter = ArrayAdapter.createFromResource(this, R.array.spm, android.R.layout.simple_spinner_item);
-        }
         else if(currentSelection.equals("Hospitality Management"))
         {
             adapter = ArrayAdapter.createFromResource(this, R.array.hosp, android.R.layout.simple_spinner_item);
