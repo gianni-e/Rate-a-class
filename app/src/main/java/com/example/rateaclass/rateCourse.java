@@ -32,7 +32,8 @@ public class rateCourse extends AppCompatActivity
     Context ctx = this;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_course);
         comments = findViewById(R.id.comments);
@@ -87,6 +88,7 @@ public class rateCourse extends AppCompatActivity
 
     public void submitRating(View v)
     {
+        //get our inputted data to execute in the params for the php script
         course_name = String.valueOf(courseName.getSelectedItem());
         professor_name = professor.getText().toString();
         comments_given = comments.getText().toString();
@@ -118,6 +120,7 @@ public class rateCourse extends AppCompatActivity
                 //url parameters that get added on to the url to POST
                 String urlParams = "rating="+rating+"&name="+courseName+"&number="+courseNumber+"&comments="+comments+"&professor="+professor;
 
+                //open a http connection to our url
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
                 OutputStream os = httpURLConnection.getOutputStream();
@@ -131,9 +134,7 @@ public class rateCourse extends AppCompatActivity
                 }
                 is.close();
                 httpURLConnection.disconnect();
-
                 return data;
-
             }
             catch (MalformedURLException e)
             {
@@ -155,6 +156,7 @@ public class rateCourse extends AppCompatActivity
                 s = "Rating submitted!";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            // go to success activity
             goToSuccess();
         }
     }

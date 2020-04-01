@@ -57,8 +57,9 @@ public class viewCourse extends AppCompatActivity
 
     private void parseJSON()
     {
+        //our url that outputs the json data from the database
         String url = "http://192.168.1.2/api/retrieve.php";
-
+        //create a GET request from our url and try to get the data
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>()
                 {
@@ -67,6 +68,7 @@ public class viewCourse extends AppCompatActivity
                     {
                         try
                         {
+                            //get the data from the json object named result
                             JSONArray jsonArray = response.getJSONArray("result");
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
@@ -77,10 +79,11 @@ public class viewCourse extends AppCompatActivity
                                 String professor = hit.getString("professor");
                                 String comments = hit.getString("comments");
                                 String rating = hit.getString("rating");
-
+                                //add a new rating object to our recycleview list
                                 mRatingList.add(new Rating(rating, name, number, comments, professor));
                             }
-                            Collections.sort(mRatingList, new Comparator<Rating>() {
+                                Collections.sort(mRatingList, new Comparator<Rating>()
+                                {
                                 @Override
                                 public int compare(Rating o1, Rating o2)
                                 {
@@ -96,7 +99,8 @@ public class viewCourse extends AppCompatActivity
                     }
                 }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void onErrorResponse(VolleyError error)
+            {
                 error.printStackTrace();
             }
         });
@@ -114,7 +118,7 @@ public class viewCourse extends AppCompatActivity
         SearchView searchView = (SearchView) searchItem.getActionView();
 
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
+        //set a listener to listen for input to the search bar
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
