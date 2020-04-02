@@ -79,11 +79,12 @@
                 android:id="@+id/professorInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="7"
+                android:ems="8"
                 android:lines="2"
                 android:text="@string/professorInputString"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="start"
+                android:paddingEnd="10dp"
                 />
 
             <EditText
