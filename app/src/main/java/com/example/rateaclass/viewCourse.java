@@ -45,6 +45,7 @@ public class viewCourse extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_course);
+        getSupportActionBar().setTitle("Search for a course");
         mRecyclerView = findViewById(R.id.reviewViews);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -116,7 +117,7 @@ public class viewCourse extends AppCompatActivity
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
-
+        searchView.setQueryHint("Search... (EX: Computer Science)");
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         //set a listener to listen for input to the search bar
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

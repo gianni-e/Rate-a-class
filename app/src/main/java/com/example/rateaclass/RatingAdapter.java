@@ -64,11 +64,11 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
         String professor = currentItem.getInstructor();
         String comments = currentItem.getComments();
 
-        holder.mCourseName.setText(name);
-        holder.mCourseNumber.setText(number);
+        holder.mCourseName.setText("Major: " + name);
+        holder.mCourseNumber.setText("Course number: " + number);
         holder.mProfessor.setText("Professor: " + professor);
         holder.mComments.setText("Comments: " + comments);
-        holder.mRating.setText("Stars: " + rating + " out of 5.0");
+        holder.mRating.setText(rating + " out of 5.0 stars");
     }
 
     @Override
