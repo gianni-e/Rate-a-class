@@ -12,14 +12,15 @@
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="59dp"
         android:layout_marginEnd="131dp"
-        android:layout_marginBottom="273dp"
+        android:layout_marginBottom="217dp"
         android:background="@drawable/border"
         android:text="@string/view_courses"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rateCourse" />
 
@@ -28,16 +29,17 @@
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="323dp"
+        android:layout_marginTop="86dp"
         android:layout_marginEnd="131dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="59dp"
         android:background="@drawable/border"
         android:text="@string/rate_course"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/viewCourse"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -51,6 +53,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ratelogo"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

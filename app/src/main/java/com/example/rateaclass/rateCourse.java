@@ -64,6 +64,7 @@ public class rateCourse extends AppCompatActivity
             {
                 //called when we click the submit button
                 submitRating(v);
+                finish();
             }
         });
 
@@ -94,8 +95,15 @@ public class rateCourse extends AppCompatActivity
         comments_given = comments.getText().toString();
         course_number = String.valueOf(courseNumber.getSelectedItem());
         rating_value = String.valueOf(rating.getRating());
-        backgroundTask b = new backgroundTask();
-        b.execute(rating_value, course_name, course_number, comments_given, professor_name);
+        backgroundTask background = new backgroundTask();
+        background.execute(rating_value, course_name, course_number, comments_given, professor_name);
+    }
+
+    public void goToSuccessActivity()
+    {
+        //if post is successful, call this function to go to success screen activity
+        Intent intent = new Intent(this, successScreen.class);
+        startActivity(intent);
     }
 
     class backgroundTask extends AsyncTask<String, String, String>
@@ -123,16 +131,16 @@ public class rateCourse extends AppCompatActivity
                 //open a http connection to our url
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
-                OutputStream os = httpURLConnection.getOutputStream();
-                os.write(urlParams.getBytes());
-                os.flush();
-                os.close();
-                InputStream is = httpURLConnection.getInputStream();
-                while((tmp=is.read())!=-1)
+                OutputStream output = httpURLConnection.getOutputStream();
+                output.write(urlParams.getBytes());
+                output.flush();
+                output.close();
+                InputStream input = httpURLConnection.getInputStream();
+                while((tmp = input.read())!=-1)
                 {
                     data += (char)tmp;
                 }
-                is.close();
+                input.close();
                 httpURLConnection.disconnect();
                 return data;
             }
@@ -151,20 +159,15 @@ public class rateCourse extends AppCompatActivity
         @Override
         protected void onPostExecute(String s)
         {
-            if(s.equals(""))
+            if(s.equals(" "))
             {
                 s = "Rating submitted!";
             }
+            //set custom toast message(wont change though?)
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
             // go to success activity
-            goToSuccess();
+            goToSuccessActivity();
         }
-    }
-
-    public void goToSuccess() {
-        //if post is successful, call this function to go to success screen activity
-        Intent intent = new Intent(this, successScreen.class);
-        startActivity(intent);
     }
 
     public void courseSelection()

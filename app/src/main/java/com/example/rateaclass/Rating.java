@@ -1,5 +1,7 @@
 package com.example.rateaclass;
-
+/*
+* This is our class that handles our rating objects to put inside the recycleview that is in the view course activity
+*/
 public class Rating
 {
     private String starRating;

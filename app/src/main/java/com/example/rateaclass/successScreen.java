@@ -1,7 +1,10 @@
 package com.example.rateaclass;
 
-import androidx.appcompat.app.AppCompatActivity;
+/*
+* This is our success activity that is shown to the user when their review is successfully submitted
+*/
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +24,7 @@ public class successScreen extends AppCompatActivity implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 returnToMain();
+                finish();
             }
         });
     }

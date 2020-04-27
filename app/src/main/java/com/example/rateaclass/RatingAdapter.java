@@ -1,5 +1,9 @@
 package com.example.rateaclass;
 
+/*
+* This is our adapter that is used to fill each entry inside the recycleview
+*/
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +14,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingViewHolder> implements Filterable
@@ -81,6 +84,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
         return ratingFilter;
     }
 
+    //this is how we filter our input from the searchview
     private Filter ratingFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -92,7 +96,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingView
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (Rating item : ratingListFull) {
-                    if (item.getCourseName().toLowerCase().contains(filterPattern)) {
+                    if (item.getCourseNumber().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

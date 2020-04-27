@@ -1,5 +1,10 @@
 package com.example.rateaclass;
 
+/*
+* This is our first activity that shows up on the app when it is launched
+* This handles just switching between the two activities that are given to the user
+*/
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,37 +1,32 @@
 package com.example.rateaclass;
 
+/*
+* This handles parsing our json data into an object from our database
+* This also creates our searchview item that will handle filtering out the data based on course number
+*/
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.ProgressBar;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 public class viewCourse extends AppCompatActivity
 {
@@ -115,9 +110,10 @@ public class viewCourse extends AppCompatActivity
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
+        //this is our searchview item
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint("Search... (EX: Computer Science)");
+        searchView.setQueryHint("Search... (Course Number)");
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         //set a listener to listen for input to the search bar
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -128,6 +124,7 @@ public class viewCourse extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                //filter our recycleview with our search term that the user enters
                 ratingAdapter.getFilter().filter(newText);
                 return false;
             }
